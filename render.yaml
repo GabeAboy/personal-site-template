@@ -1,0 +1,15 @@
+# Render static site Blueprint.
+#
+# Use via New > Blueprint in the Render dashboard, or create a Static Site by
+# hand with an empty build command and publish path `.`. `domains` only
+# declares the association; DNS is still configured manually.
+services:
+  - type: web
+    runtime: static
+    name: my-site
+    # No build step: the repo root is the site, served as-is.
+    buildCommand: ""
+    staticPublishPath: .
+    # domains:
+    #   - example.com
+    #   - www.example.com

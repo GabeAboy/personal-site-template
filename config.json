@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "Your Name",
+    "description": "One sentence about what you build.",
+    "favicon": "assets/favicon.svg"
+  },
+  "profile": {
+    "name": "Your Name",
+    "avatar": "assets/portrait.svg",
+    "location": "City, Country",
+    "tagline": "A short italic line about what drives you.",
+    "pitch": "A bold sentence with a highlighted phrase in it.",
+    "pitchHighlight": "highlighted phrase",
+    "bio": "A short paragraph. Who you are, what you work on, what you care about."
+  },
+  "socials": {
+    "label": "Get to know me",
+    "items": [
+      { "label": "GitHub",   "url": "https://github.com/your-handle",         "icon": "github" },
+      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/your-handle", "icon": "linkedin" },
+      { "label": "Bluesky",  "url": "https://bsky.app/profile/your-handle",    "icon": "bluesky" },
+      { "label": "Email",    "url": "mailto:you@example.com",                  "icon": "email" }
+    ]
+  },
+  "companies": {
+    "label": "Places I've worked",
+    "items": [
+      { "name": "Acme Corp",  "logo": "assets/companies/acme.svg",  "url": "https://example.com" },
+      { "name": "Globex",     "logo": "assets/companies/globex.svg" }
+    ]
+  },
+  "projects": [
+    {
+      "name": "Sample App",
+      "url": "https://example.com",
+      "description": "One or two sentences on what this project does and who it is for.",
+      "badge": "12 users",
+      "icon": { "class": "ic-blue", "glyph": "S" },
+      "slides": [
+        { "image": "assets/projects/sample-app/01-landing.svg",   "label": "Landing" },
+        { "image": "assets/projects/sample-app/02-dashboard.svg", "label": "Dashboard" }
+      ]
+    },
+    {
+      "name": "Coming Soon App",
+      "comingSoon": true,
+      "description": "Cards with comingSoon: true show a toast instead of navigating.",
+      "badge": "Beta",
+      "icon": { "class": "ic-orange", "glyph": "{ }" },
+      "slides": [
+        { "image": "assets/projects/sample-app/01-landing.svg", "label": "Preview" }
+      ]
+    },
+    {
+      "name": "Logo Tile App",
+      "url": "https://example.com",
+      "description": "Use icon.image instead of icon.glyph to put a logo in the tile.",
+      "icon": { "class": "ic-green", "image": "assets/sample-logo.svg", "imageAlt": "Sample logo" }
+    }
+  ],
+  "theme": {
+    "bg":         "#e9e9e9",
+    "card":       "#ffffff",
+    "ink":        "#111111",
+    "ink2":       "#2a2a2a",
+    "muted":      "#6b6b6b",
+    "line":       "#ececec",
+    "pillBg":     "#eaeaff",
+    "pillFg":     "#4f4fcb",
+    "pillDot":    "#7a7af5",
+    "highlight":  "#f4c542",
+    "chart":      "#f6a96b",
+    "chartFill":  "rgba(246,169,107,0.32)",
+    "gridDot":    "#d8d8d8",
+    "dark":       "#1c1f33",
+    "pitchLink":  "#b8860b"
+  }
+}

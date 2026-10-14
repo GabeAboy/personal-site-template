@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- Edit these by hand: link-preview crawlers do not run JavaScript, so they
+       cannot be driven from config.json. -->
+  <title>Your Name</title>
+  <meta name="description" content="One sentence about what you build." />
+  <link rel="canonical" href="https://example.com/" />
+
+  <!-- Open Graph (link previews on iMessage, Slack, LinkedIn, Facebook, etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com/" />
+  <meta property="og:site_name" content="Your Name" />
+  <meta property="og:title" content="Your Name" />
+  <meta property="og:description" content="One sentence about what you build." />
+  <meta property="og:image" content="https://example.com/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Your Name — one sentence about what you build." />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Your Name" />
+  <meta name="twitter:description" content="One sentence about what you build." />
+  <meta name="twitter:image" content="https://example.com/assets/og-image.png" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:         #e9e9e9;
+      --card:       #ffffff;
+      --ink:        #111111;
+      --ink-2:      #2a2a2a;
+      --muted:      #6b6b6b;
+      --line:       #ececec;
+      --pill-bg:    #eaeaff;
+      --pill-fg:    #4f4fcb;
+      --pill-dot:   #7a7af5;
+      --highlight:  #f4c542;
+      --chart:      #f6a96b;
+      --chart-fill: rgba(246,169,107,0.32);
+      --grid-dot:   #d8d8d8;
+      --dark:       #1c1f33;
+      --pitch-link: #b8860b;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 16px; line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 96px 48px 32px;
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+    @media (max-width: 1000px) {
+      .page { grid-template-columns: 1fr; gap: 40px; padding: 32px 20px 60px; }
+    }
+
+    /* ============ LEFT COLUMN ============ */
+    .left { position: sticky; top: 32px; }
+    @media (max-width: 1000px) { .left { position: static; } }
+
+    .avatar {
+      width: 210px; height: 210px; border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 18px 36px -18px rgba(0,0,0,0.35);
+      margin: 0 auto 28px;
+      background: #e69658;
+    }
+    .avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      user-select: none;
+    }
+
+    .name {
+      font-size: 56px;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1;
+      margin: 0 0 18px;
+      color: var(--ink);
+      text-align: center;
+    }
+
+    .meta {
+      display: flex; align-items: center; gap: 18px;
+      font-size: 15px; color: var(--muted);
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .meta-item { display: inline-flex; align-items: center; gap: 7px; }
+    .meta-item svg { width: 16px; height: 16px; color: var(--muted); }
+
+    .tagline {
+      font-size: 18px;
+      font-style: italic;
+      color: var(--ink-2);
+      margin: 0 0 24px;
+      line-height: 1.4;
+    }
+
+    .news-pitch {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 18px;
+      line-height: 1.4;
+    }
+    .news-pitch .link {
+      color: var(--pitch-link);
+      padding: 0 2px;
+      font-weight: 700;
+    }
+
+    .blurb {
+      font-size: 16px;
+      color: var(--ink-2);
+      margin: 0 0 32px;
+      line-height: 1.5;
+      max-width: 36ch;
+    }
+
+    .socials {
+      display: flex; align-items: center; gap: 22px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .socials a {
+      color: var(--ink);
+      display: inline-flex; align-items: center;
+      transition: color 0.15s ease;
+    }
+    .socials a:hover { color: var(--muted); }
+    .socials svg { width: 22px; height: 22px; }
+
+    .socials-label,
+    .companies-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin: -16px 0 12px;
+    }
+    .socials-label { margin: -8px 0 12px; }
+    .companies {
+      display: flex; align-items: center; gap: 16px;
+      margin: 0 0 40px;
+      flex-wrap: wrap;
+    }
+    .companies a { display: inline-flex; }
+    .companies img {
+      width: 26px; height: 26px;
+      border-radius: 6px;
+      object-fit: contain;
+      filter: grayscale(1);
+      opacity: 0.7;
+      transition: filter 0.15s ease, opacity 0.15s ease;
+    }
+    .companies img:hover { filter: none; opacity: 1; }
+
+    /* ============ RIGHT COLUMN — CARD GRID ============ */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 18px 20px 12px;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.02), 0 8px 18px -14px rgba(0,0,0,0.08);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      display: block;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.02), 0 16px 28px -16px rgba(0,0,0,0.14);
+    }
+    .card-head {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 10px;
+    }
+    .card-icon {
+      width: 36px; height: 36px;
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .card-icon svg { width: 20px; height: 20px; }
+    .card-icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .card-icon .glyph {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1;
+    }
+    /* Icon-tile presets. Reference by name from config.json ("icon": { "class": "ic-blue" }).
+       Add your own below. */
+    .ic-gold   { background: #9B7825; }
+    .ic-purple { background: #7e22ce; }
+    .ic-green {
+      background: linear-gradient(135deg, #0f6b4a 0%, #0a5239 100%);
+      box-shadow: 0 4px 10px -4px rgba(15,107,74,0.55);
+    }
+    .ic-orange {
+      background: linear-gradient(135deg, #fc6d26 0%, #e24329 100%);
+      box-shadow: 0 4px 10px -4px rgba(252,109,38,0.55);
+    }
+    .ic-blue {
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      box-shadow: 0 4px 10px -4px rgba(37,99,235,0.55);
+    }
+    .ic-navy {
+      background: linear-gradient(180deg, #1a2336 0%, #0f1521 100%);
+      box-shadow: 0 4px 10px -4px rgba(124,58,237,0.55);
+      overflow: hidden;
+    }
+    .ic-teal {
+      background: linear-gradient(135deg, #159A82 0%, #0E7A67 100%);
+      box-shadow: 0 4px 10px -4px rgba(21,154,130,0.55);
+      overflow: hidden;
+    }
+    /* For a dark logo image on a dark tile, invert it to white: */
+    .ic-green img { filter: brightness(0) invert(1); }
+
+    .card-name {
+      font-size: 18px; font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.015em;
+      flex: 1;
+      min-width: 0;
+    }
+    .pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 10px 5px 6px;
+      background: var(--pill-bg);
+      border-radius: 100px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px; font-weight: 600;
+      color: var(--pill-fg);
+      white-space: nowrap;
+    }
+    .pill .dot {
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--pill-dot);
+      display: inline-flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 10px; font-weight: 700;
+    }
+    .pill .dot svg { width: 10px; height: 10px; }
+    .card-desc {
+      font-size: 15px;
+      color: var(--ink-2);
+      line-height: 1.4;
+      margin: 0 0 8px;
+    }
+
+    /* ===== CAROUSEL ===== */
+    .carousel {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #f4f4f4;
+      border: 1px solid var(--line);
+      margin-top: 6px;
+    }
+    .carousel-track {
+      display: flex;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      height: 180px;
+      gap: 0;
+    }
+    .carousel-track::-webkit-scrollbar { display: none; }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+      isolation: isolate;
+    }
+    .carousel-slide img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+    .carousel-slide .slide-label {
+      position: absolute;
+      left: 10px; bottom: 10px;
+      padding: 4px 9px;
+      background: rgba(28, 31, 51, 0.82);
+      color: #fff;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      border-radius: 5px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 1;
+    }
+    .carousel-slide .slide-count {
+      position: absolute;
+      right: 10px; top: 10px;
+      padding: 3px 8px;
+      background: rgba(255,255,255,0.92);
+      color: var(--ink-2);
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 10.5px;
+      font-weight: 600;
+      border-radius: 5px;
+      border: 1px solid var(--line);
+      z-index: 1;
+    }
+
+    .carousel-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      margin-top: 9px;
+      font-size: 11.5px;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+    .carousel-hint svg { width: 12px; height: 12px; }
+
+    /* ===== COMING-SOON CARDS + TOAST ===== */
+    .card-coming-soon { cursor: pointer; }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 32px;
+      transform: translate(-50%, 16px);
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 12px 18px;
+      background: var(--dark);
+      color: #fff;
+      border-radius: 12px;
+      font-size: 14px; font-weight: 600;
+      letter-spacing: -0.005em;
+      box-shadow: 0 14px 30px -14px rgba(28,31,51,0.55);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 100;
+    }
+    .toast.is-visible {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+    .toast svg { width: 16px; height: 16px; }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <aside class="left" data-mount="profile"></aside>
+    <main class="grid" data-mount="projects"></main>
+  </div>
+
+  <div class="toast" role="status" aria-live="polite" data-mount="toast">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    <span data-toast-text>Coming soon</span>
+  </div>
+
+  <script src="render.js" defer></script>
+
+</body>
+</html>
